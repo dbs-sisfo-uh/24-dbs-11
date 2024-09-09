@@ -2,4 +2,4 @@
 -- Muhammad Erwin Arif
 
 -- Nomor 1
-CREATE DATABASE praktikum1
+CREATE DATABASE praktikum1;
