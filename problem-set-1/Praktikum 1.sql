@@ -1,3 +1,7 @@
+-- NAMA : ILHAM KURNIAWAN
+-- NIM  : H071231024
+
+-- NO 1
 CREATE DATABASE library;
 
 USE library;
@@ -17,14 +21,18 @@ CREATE TABLE books (
 
 DESCRIBE books;
 
+-- NO 2
 ALTER	TABLE authors
 ADD nationality VARCHAR(50) NOT NULL;
 
+-- NO 3
 ALTER TABLE books
 ADD UNIQUE(isbn);
 
-DESCRIBE authors;
+-- NO 4
+SHOW TABLES;
 
+-- NO 5
 ALTER TABLE books
 MODIFY title VARCHAR(150) NOT NULL,
 ADD published_id YEAR NOT NULL,
