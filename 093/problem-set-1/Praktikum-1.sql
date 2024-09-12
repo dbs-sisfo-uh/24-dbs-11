@@ -9,7 +9,7 @@ USE library;
 -- NOMOR 1
 CREATE TABLE authors (
 	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-	Nama VARCHAR(100) NOT NULL
+	nama VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE books (
@@ -47,8 +47,6 @@ CREATE TABLE members (
 -- Menambahkan Variabel Baru Ke Books
 ALTER TABLE books
 MODIFY title VARCHAR(150) NOT NULL;
-
-ALTER TABLE books
 ADD published_year YEAR NOT NULL,
 ADD genre VARCHAR(50) NOT NULL,
 ADD copies_available INT NOT NULL;                         
