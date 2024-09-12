@@ -1,61 +1,78 @@
+-- NAMA : MUH. TEGAR ADYAKSA
+-- NIM  : H071231093
+
+
 CREATE DATABASE library;  
 
 USE library;
 
-CREATE TABLE AUTHORS (
-	ID INT PRIMARY KEY AUTO_INCREMENT,
-	NAMA VARCHAR(100) NOT NULL
+-- NOMOR 1
+CREATE TABLE authors (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	Nama VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE BOOKS (
-	ID INT PRIMARY KEY AUTO_INCREMENT,
-	ISBN VARCHAR(13),
-	TITLE VARCHAR(100) NOT NULL,
-	AUTHOR_ID INT,  
-	FOREIGN KEY(AUTHOR_ID) REFERENCES AUTHORS(ID)  
-);                                                -- NOMOR 1
+CREATE TABLE books (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	isbn CHAR(13) NOT NULL,
+	title VARCHAR(100) NOT NULL, 
+	author_id INT NOT NULL,  
+	FOREIGN KEY(author_id) REFERENCES authors(id)  
+);                                                
 
+-- NOMOR 2
 ALTER TABLE authors
-ADD NATIONALITY VARCHAR(50);                      -- NOMOR 2
+ADD COLUMN nationality VARCHAR(50) NOT NULL;                      
 
-ALTER TABLE BOOKS
-ADD CONSTRAINT UNIQUE (ISBN);                     -- NOMOR 3
+-- NOMOR 3
+ALTER TABLE books
+ADD CONSTRAINT UNIQUE (isbn);                     
 
-DESCRIBE AUTHORS;
-DESCRIBE BOOKS;                                   -- NOMOR 4
+-- NOMOR 4
+SHOW TABLES;
+DESCRIBE authors;
+DESCRIBE books;                                   
 
-CREATE TABLE MEMBERS (                            -- NOMOR 5
-	ID INT PRIMARY KEY AUTO_INCREMENT,
-	FIRST_NAME VARCHAR(50),
-	LAST_NAME VARCHAR(50),
-	EMAIL VARCHAR(100) UNIQUE,
-	PHONE_NUMBER CHAR(10) NULL,
-	JOIN_DATE DATE, 
-	MEMBERSHIP_TYPE VARCHAR(50)
-)                                                 -- membuat tabel members
+-- Membuat Tabel Members
+CREATE TABLE members (                            
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	phone_number CHAR(10),
+	join_date DATE NOT NULL, 
+	membership_date VARCHAR(50) NOT NULL
+)                                                 
 
-ALTER TABLE BOOKS
-MODIFY TITLE VARCHAR(150);
+-- Menambahkan Variabel Baru Ke Books
+ALTER TABLE books
+MODIFY title VARCHAR(150) NOT NULL;
 
-ALTER TABLE BOOKS
-ADD PUBLISHED_YEAR YEAR,
-ADD GENRE VARCHAR(50),
-ADD COPIES_AVAILABLE INT;                         -- menambahkan variabel baru ke books
+ALTER TABLE books
+ADD published_year YEAR NOT NULL,
+ADD genre VARCHAR(50) NOT NULL,
+ADD copies_available INT NOT NULL;                         
 
-CREATE TABLE BORROWINGS (
-	ID INT PRIMARY KEY AUTO_INCREMENT,
-	MEMBER_ID INT,
-	BOOK_ID INT,
-	BORROW_DATE DATE,
-	RETURN_DATE DATE NULL,
-	FOREIGN KEY(MEMBER_ID) REFERENCES MEMBERS(ID),
-	FOREIGN KEY(BOOK_ID) REFERENCES BOOKS(ID)      -- membuat tabel borrowings
+-- Membuat Tabel Borrowings
+CREATE TABLE borrowings (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	member_id INT NOT NULL,
+	book_id INT NOT NULL,
+	borrow_date DATE NOT NULL,
+	return_date DATE,
+	FOREIGN KEY(member_id) REFERENCES members(id),
+	FOREIGN KEY(book_id) REFERENCES BOOKS(id)
 )
 
-DROP TABLE IF EXISTS BORROWINGS;
-DROP TABLE IF EXISTS BOOKS;
-DROP TABLE IF EXISTS MEMBERS;
-DROP TABLE IF EXISTS authors;                     -- menghapus tabel untuk menguji soal satu per satu
+SHOW TABLES;
+DESCRIBE members;
+DESCRIBE borrowings;
+
+-- menghapus tabel untuk menguji soal satu per satu
+DROP TABLE IF EXISTS borrowings;
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS members;
+DROP TABLE IF EXISTS authors;                    
 
 
 
