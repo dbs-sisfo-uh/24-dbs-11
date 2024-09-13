@@ -8,12 +8,12 @@ USE library;
 
 -- NOMOR 1
 CREATE TABLE authors (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	id INT PRIMARY KEY AUTO_INCREMENT,
 	nama VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE books (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	id INT PRIMARY KEY AUTO_INCREMENT,
 	isbn CHAR(13) NOT NULL,
 	title VARCHAR(100) NOT NULL, 
 	author_id INT NOT NULL,  
@@ -35,7 +35,7 @@ DESCRIBE books;
 
 -- Membuat Tabel Members
 CREATE TABLE members (                            
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	id INT PRIMARY KEY AUTO_INCREMENT,
 	first_name VARCHAR(50) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
 	email VARCHAR(100) UNIQUE NOT NULL,
@@ -53,7 +53,7 @@ ADD copies_available INT NOT NULL;
 
 -- Membuat Tabel Borrowings
 CREATE TABLE borrowings (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	id INT PRIMARY KEY AUTO_INCREMENT,
 	member_id INT NOT NULL,
 	book_id INT NOT NULL,
 	borrow_date DATE NOT NULL,
