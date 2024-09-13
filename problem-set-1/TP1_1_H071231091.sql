@@ -9,7 +9,7 @@ CREATE TABLE authors(
 );
 CREATE TABLE books(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	isbn VARCHAR(13) NOT NULL,
+	isbn CHAR(13) NOT NULL,
 	title VARCHAR(100) NOT NULL,
 	author_id INT NOT NULL,
 	FOREIGN KEY (author_id) REFERENCES authors(id)
