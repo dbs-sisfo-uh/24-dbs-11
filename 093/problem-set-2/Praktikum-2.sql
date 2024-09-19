@@ -2,7 +2,7 @@
 -- NIM  : H071231093
 
 -- NOMOR 1
-SELECT productCode AS 'Kode Produk', productName AS 'Nama Produk', quantityInStock AS 'Jumlah Stok'
+SELECT productCode AS Kode_Produk, productName AS 'Nama Produk', quantityInStock AS 'Jumlah Stok'
 FROM products
 WHERE quantityInStock <= 6000 AND quantityInStock >= 5000
 ORDER BY quantityInStock;
@@ -23,9 +23,10 @@ LIMIT 10;
 -- NOMOR 4
 SELECT productCode AS 'Kode Produk', productName AS 'Nama Produk', ProductLine AS 'Lini Produk', buyPrice AS 'Harga Beli'
 FROM products
-ORDER BY buyPrice DESC;
+ORDER BY buyPrice DESC
 LIMIT 10 OFFSET 5;
 
 -- NOMOR 5
 SELECT DISTINCT country, city 
-FROM customers;
+FROM customers
+ORDER BY country, city;
