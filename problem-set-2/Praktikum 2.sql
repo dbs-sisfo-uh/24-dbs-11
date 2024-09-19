@@ -10,7 +10,7 @@ ORDER BY quantityinstock ASC;
 -- No 2
 SELECT ordernumber AS 'Nomor Pesanan', orderdate AS 'Tanggal Pesanan', `status`, customernumber AS 'Nomor Pelanggan'
 FROM orders
-WHERE `status` IN ("In Process", "On Hold", "Disputed", "Cancelled", "Resolved")
+WHERE `status` != "Shipped"
 ORDER BY customernumber ASC;
 
 -- No 3
