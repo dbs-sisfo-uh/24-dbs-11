@@ -50,8 +50,6 @@ VALUES (1, 1, 4, '2023-07-10', '2023-07-25'),
 
 
 -- nomor 2
-
-
 SELECT * FROM borrowings
 WHERE return_date IS NULL
 
@@ -62,10 +60,18 @@ WHERE id <= 3;
 -- nomor 3
 UPDATE members
 SET membership_type = "Standar"
-WHERE id = 3;
+WHERE id = 11;
+
+SELECT * FROM members
 
 DELETE FROM members
-WHERE id = 2;
-SELECT * FROM  borrowings
+WHERE id = 3;
 
+
+ALTER TABLE orders
+DROP FOREIGN KEY orders_ibfk_1;
+
+ALTER TABLE orders
+ADD FOREIGN KEY(product_id) REFERENCES product(id)
+ON DELETE CASCADE;
 
