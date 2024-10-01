@@ -1,11 +1,6 @@
 -- Nama : Ilham Kurniawan
 -- NIM  : H071231024
 
--- SELECT * FROM customers;
--- SELECT * FROM products;
--- SELECT * FROM orders;
--- SELECT * FROM orderdetails;
-
 -- No 1
 SELECT customerNumber, customerName, country
 FROM customers
@@ -17,7 +12,7 @@ ORDER BY creditLimit DESC;
 SELECT productCode, productName, quantityInStock, buyPrice
 FROM products
 WHERE quantityInStock BETWEEN 1000 AND 2000
-AND (buyPrice < 50 OR buyPrice > 150)
+AND (buyPrice < 50 OR buyPrice > 150) 
 AND productLine != 'Vintage';
 
 -- No 3
@@ -40,3 +35,13 @@ WHERE quantityOrdered > 50
 AND priceEach > 100
 AND productCode NOT LIKE 'S18%'
 ORDER BY discountedTotalPrice DESC;
+
+
+-- Tugas Tambahan
+
+-- Temukan semua produk di mana selisih antara MSRP dan buyPrice lebih besar dari 30% dari buyPrice,
+-- tetapi hanya jika quantityInStock berada di antara 50 dan 100 unit. Tampilkan productCode, productName, MSRP, buyPrice, dan quantityInStock.
+
+SELECT productCode, productName, MSRP, buyPrice, quantityInStock
+FROM products
+WHERE (MSRP - buyPrice) > (buyPrice * 0.3) AND (quantityInStock BETWEEN 50 AND 100);
