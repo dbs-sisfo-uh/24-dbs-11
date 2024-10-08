@@ -1,6 +1,3 @@
-
--- 
-
 SELECT * FROM books;
 INSERT  INTO authors (NAME, nationality)  -- TABEL 1
 VALUES ("tere liye", "indonesia"),
@@ -59,7 +56,7 @@ ALTER TABLE borrowings
 DROP CONSTRAINT borrowings_ibfk_1;
 
 ALTER TABLE borrowings
-ADD FOREIGN KEY(member_id) REFERENCES members(id) ON DELETE CASCADE
+ADD FOREIGN KEY(member_id) REFERENCES members(id) ON DELETE CASCADE;
 
 
 
