@@ -72,3 +72,18 @@ JOIN orderdetails AS od ON o.orderNumber = od.orderNumber
 JOIN products AS pr ON od.productCode = pr.productCode
 WHERE c.customerName LIKE 'Corporate%'
 AND p.paymentDate LIKE '%11-__';
+
+
+-- Tugas Tambahan TP5
+
+-- No 1 - Menampilkan Karyawan yang tidak memiliki atasan
+SELECT employeeNumber, firstName, jobTitle, reportsTo
+FROM employees
+WHERE reportsTo IS NULL;
+
+
+-- No 2 - Menampilkan Produk yang belum pernah di order oleh kustomer
+SELECT p.productCode, p.productName
+FROM products AS p
+LEFT JOIN orderdetails AS od ON p.productCode = od.productCode
+WHERE od.productCode IS NULL;
