@@ -65,3 +65,25 @@ JOIN orderdetails od USING(orderNumber)
 JOIN products AS p USING(productCode) 
 WHERE o.shippedDate IS NULL
 GROUP BY `Nama Pelanggan`;
+
+
+-- Tugas Tambahan TP6
+
+
+-- Nomor 1
+-- Tampilkan nama karyawan dan total penjualan yang dilakukan oleh pelanggan terkait
+SELECT e.firstName AS 'Nama Karyawan', SUM(od.quantityOrdered * od.priceEach) AS 'Total Penjualan'
+FROM employees e
+JOIN customers c ON e.employeeNumber = c.salesRepEmployeeNumber
+JOIN orders o USING(customerNumber)
+JOIN orderdetails od USING(orderNumber)
+GROUP BY e.employeeNumber
+
+
+-- Nomor 2
+-- Tampilkan rata-rata pembayaran oleh setiap pelanggan di tiap tahunnya (pakai dua kolom group by)
+SELECT c.customernumber, c.customerName AS 'Nama Karyawan', YEAR(p.paymentDate) AS 'Tanggal Pembayaran', AVG(p.amount) AS 'Rata-rata Pembayaran'
+FROM customers c
+JOIN payments p USING(customerNumber)
+GROUP BY c.customerName, YEAR(p.paymentDate)
+ORDER BY c.customernumber;
